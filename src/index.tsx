@@ -4,11 +4,14 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { DataReplacementProvider } from './contexts/DataReplacementContext';
+import { Analytics } from '@vercel/analytics/react';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
+
 root.render(
     <React.StrictMode>
         <DataReplacementProvider>
+            <Analytics />
             <App />
         </DataReplacementProvider>
     </React.StrictMode>
