@@ -8,10 +8,14 @@ export type Data = {
     hasReplace: boolean;
 }[];
 
-type Props = {};
+type Props = {
+    visible: boolean;
+    setVisible: React.Dispatch<React.SetStateAction<boolean>>;
+};
 
 const StatisticalTable = (props: Props) => {
     const { Data, setData } = React.useContext(DataReplacementContext);
+    const { visible, setVisible } = props;
 
     const HandleChangeValue = (e: React.ChangeEvent<HTMLInputElement>, index: number) => {
         const tempData = [...Data];
@@ -21,8 +25,16 @@ const StatisticalTable = (props: Props) => {
     };
 
     return (
-        <div className='p-2  rounded-md sm:p-4 dark:text-gray-800 dark:bg-gray-50'>
-            <h2 className='mb-3 text-2xl font-semibold leading-tight'>Thống kê</h2>
+        <div className='p-2 rounded-md sm:p-4 dark:text-gray-800 dark:bg-gray-50'>
+            <div className='flex justify-between items-center'>
+                <h2 className='mb-3 text-2xl font-semibold leading-tight'>Thống kê</h2>
+                <p
+                    onClick={() => setVisible(!visible)}
+                    className='px-2 py-1 text-white bg-blue-600 rounded-lg cursor-pointer hover:opacity-80'
+                >
+                    Xem biểu đồ
+                </p>
+            </div>
             <div className='overflow-x-auto rounded-md'>
                 <table className='min-w-full text-md rounded-md'>
                     <thead className='rounded-t-lg dark:bg-gray-300'>

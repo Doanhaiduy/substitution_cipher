@@ -1,6 +1,8 @@
 import React from 'react';
 import StatisticalTable from '../components/StatisticalTable';
 import DataReplacementContext from '../contexts/DataReplacementContext';
+import Chart from '../components/Chart';
+import Modal from '../components/Modal';
 
 type Props = {};
 
@@ -11,6 +13,8 @@ const SubstitutionCipher = (props: Props) => {
     const { Data, setData } = React.useContext(DataReplacementContext);
     const [selectionStart, setSelectionStart] = React.useState<number | null>(null);
     const [selectionEnd, setSelectionEnd] = React.useState<number | null>(null);
+
+    const [visible, setVisible] = React.useState(false);
 
     const StaticsText = (text: string) => {
         if (text.length === 0) {
@@ -103,24 +107,22 @@ const SubstitutionCipher = (props: Props) => {
     };
 
     return (
-        <div className='flex justify-between h-screen gap-x-5 p-5 max-w-[1200px] '>
-            <div className='w-1/2 flex flex-col items-center p-2'>
-                <h2 className='mb-3 text-2xl font-semibold leading-tight self-start'>Trình phá mã thay thế</h2>
-                <div>
-                    <textarea
-                        cols={50}
-                        rows={10}
-                        name=''
-                        id=''
-                        className='border-2 border-gray-300 p-2 rounded-lg uppercase break-words'
-                        value={text}
-                        onChange={(e) => {
-                            setData([]);
-                            setText(e.target.value);
-                            setCipherText('');
-                        }}
-                    ></textarea>
-                </div>
+        <div className='flex justify-between md:items-start items-center min-h-screen gap-x-5 max-w-[1200px] flex-col md:flex-row p-8'>
+            <div className='md:w-1/2 w-full flex flex-col items-center p-2'>
+                <h2 className='mb-3 text-2xl font-semibold leading-tight'>Trình phá mã thay thế</h2>
+                <textarea
+                    cols={40}
+                    rows={10}
+                    name=''
+                    id=''
+                    className='border-2 border-gray-300 p-2 rounded-lg uppercase break-words'
+                    value={text}
+                    onChange={(e) => {
+                        setData([]);
+                        setText(e.target.value.toUpperCase());
+                        setCipherText('');
+                    }}
+                ></textarea>
                 <div className='flex gap-2 justify-around my-4'>
                     <p
                         onClick={HandleStatistical}
@@ -141,23 +143,21 @@ const SubstitutionCipher = (props: Props) => {
                     </div>
                 )}
 
-                <div>
-                    <textarea
-                        cols={50}
-                        rows={10}
-                        name=''
-                        id=''
-                        className='border-2 border-gray-300 p-2 rounded-lg text-red-600 '
-                        value={cipherText}
-                        readOnly
-                        onSelect={handleCipherTextSelect}
-                    ></textarea>
-                </div>
+                <textarea
+                    cols={40}
+                    rows={10}
+                    name=''
+                    id=''
+                    className='border-2 border-gray-300 p-2 rounded-lg text-red-600 '
+                    value={cipherText}
+                    readOnly
+                    onSelect={handleCipherTextSelect}
+                ></textarea>
             </div>
-            <div className='w-1/2'>
-                <StatisticalTable />
+            <div className='md:w-1/2 w-full'>
+                <StatisticalTable visible={visible} setVisible={setVisible} />
+                <Modal visible={visible} setVisible={setVisible} />
             </div>
-            {/* copyright */}
         </div>
     );
 };

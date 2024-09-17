@@ -4,16 +4,16 @@ type Props = {};
 
 const Header = (props: Props) => {
     return (
-        <header className='bg-white shadow-lg h-24 hidden md:flex'>
+        <header className='bg-white shadow-lg h-24 flex justify-between'>
             <a
                 href='https://www.doanhaiduy.website'
                 target='_blank'
                 rel='noreferrer'
-                className='border flex-shrink-0 flex items-center justify-center px-4 lg:px-6 xl:px-8'
+                className='border flex-shrink-0 flex items-center justify-center px-4 lg:px-6 xl:px-8 font-bold'
             >
                 DOAN HAI DUY
             </a>
-            <nav className='header-links contents font-semibold text-base lg:text-lg'>
+            <nav className='header-links  font-semibold text-base lg:text-lg md:contents hidden'>
                 <ul className='flex items-center ml-4 xl:ml-8 mr-auto'>
                     <li className='p-3 xl:p-6 active'>
                         <a target='_blank' href='https://www.doanhaiduy.website' rel='noreferrer'>
