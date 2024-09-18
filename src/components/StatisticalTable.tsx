@@ -40,7 +40,7 @@ const StatisticalTable = (props: Props) => {
                     Xem biểu đồ
                 </p>
             </div>
-            <div className='overflow-x-auto rounded-md flex gap-2'>
+            <div className='overflow-x-auto rounded-md flex gap-2 items-start'>
                 <table className='w-1/3 text-md rounded-md'>
                     <thead className='rounded-t-lg dark:bg-gray-300'>
                         <tr className='text-right'>

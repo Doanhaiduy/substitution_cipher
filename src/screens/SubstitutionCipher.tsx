@@ -8,6 +8,7 @@ type Props = {};
 const SubstitutionCipher = (props: Props) => {
     const [text, setText] = React.useState('');
     const [cipherText, setCipherText] = React.useState('');
+    const [countFilter, setCountFilter] = React.useState<number>(0);
 
     const { Data, DataSecondary, DataThird, setData, setDataSecondary, setDataThird } =
         React.useContext(DataReplacementContext);
@@ -78,8 +79,8 @@ const SubstitutionCipher = (props: Props) => {
             CharacterFrequencyCount: value.toString(),
         }));
         tempData.sort((a, b) => parseInt(b.CharacterFrequencyCount) - parseInt(a.CharacterFrequencyCount));
-
-        setDataSecondary(tempData);
+        // filter count < 2
+        setDataSecondary(tempData.filter((item) => parseInt(item.CharacterFrequencyCount) > countFilter));
     };
 
     const StaticsTripleCharacter = (text: string) => {
@@ -111,7 +112,7 @@ const SubstitutionCipher = (props: Props) => {
         }));
         tempData.sort((a, b) => parseInt(b.CharacterFrequencyCount) - parseInt(a.CharacterFrequencyCount));
 
-        setDataThird(tempData);
+        setDataThird(tempData.filter((item) => parseInt(item.CharacterFrequencyCount) > countFilter));
     };
 
     const HandleSubstitutionCipher = () => {
@@ -174,7 +175,7 @@ const SubstitutionCipher = (props: Props) => {
     };
 
     return (
-        <div className='flex justify-between md:items-start items-center min-h-screen gap-x-5 max-w-[1200px] flex-col md:flex-row p-8'>
+        <div className='flex justify-between md:items-start items-center min-h-screen gap-x-5  flex-col md:flex-row p-8'>
             <div className='md:w-1/2 w-full flex flex-col items-center p-2'>
                 <h2 className='mb-3 text-2xl font-semibold leading-tight'>Trình phá mã thay thế</h2>
                 <textarea
@@ -205,6 +206,18 @@ const SubstitutionCipher = (props: Props) => {
                     >
                         Phá mã
                     </p>
+                    <select
+                        name=''
+                        id=''
+                        className='border-2 border-gray-300 rounded-lg text-blue-600'
+                        onChange={(e) => setCountFilter(parseInt(e.target.value))}
+                    >
+                        <option value='0'>Loại bỏ tần số</option>
+                        <option value='0'>&lt; 1</option>
+                        <option value='1'>&lt; 2</option>
+                        <option value='2'>&lt; 3</option>
+                        <option value='3'>&lt; 4</option>
+                    </select>
                 </div>
                 {text.length > 0 && (
                     <div className='border-2 border-gray-300 p-2 rounded-lg mb-2 max-w-[80%]'>
