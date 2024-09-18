@@ -10,7 +10,7 @@ const Footer = (props: Props) => {
                     <div className='px-5 py-2'>
                         <a
                             target='_blank'
-                            href='https://www.doanhaiduy.website'
+                            href='https://www.doanhaiduy.dev'
                             rel='noreferrer'
                             className='text-base leading-6 text-gray-500 hover:text-gray-900'
                         >
@@ -20,7 +20,7 @@ const Footer = (props: Props) => {
                     <div className='px-5 py-2'>
                         <a
                             target='_blank'
-                            href='https://www.doanhaiduy.website'
+                            href='https://www.doanhaiduy.dev'
                             rel='noreferrer'
                             className='text-base leading-6 text-gray-500 hover:text-gray-900'
                         >
@@ -30,7 +30,7 @@ const Footer = (props: Props) => {
                     <div className='px-5 py-2'>
                         <a
                             target='_blank'
-                            href='https://www.doanhaiduy.website'
+                            href='https://www.doanhaiduy.dev'
                             rel='noreferrer'
                             className='text-base leading-6 text-gray-500 hover:text-gray-900'
                         >
@@ -40,7 +40,7 @@ const Footer = (props: Props) => {
                     <div className='px-5 py-2'>
                         <a
                             target='_blank'
-                            href='https://www.doanhaiduy.website'
+                            href='https://www.doanhaiduy.dev'
                             rel='noreferrer'
                             className='text-base leading-6 text-gray-500 hover:text-gray-900'
                         >
@@ -50,7 +50,7 @@ const Footer = (props: Props) => {
                     <div className='px-5 py-2'>
                         <a
                             target='_blank'
-                            href='https://www.doanhaiduy.website'
+                            href='https://www.doanhaiduy.dev'
                             rel='noreferrer'
                             className='text-base leading-6 text-gray-500 hover:text-gray-900'
                         >
@@ -60,7 +60,7 @@ const Footer = (props: Props) => {
                     <div className='px-5 py-2'>
                         <a
                             target='_blank'
-                            href='https://www.doanhaiduy.website'
+                            href='https://www.doanhaiduy.dev'
                             rel='noreferrer'
                             className='text-base leading-6 text-gray-500 hover:text-gray-900'
                         >
@@ -71,7 +71,7 @@ const Footer = (props: Props) => {
                 <div className='flex justify-center mt-8 space-x-6'>
                     <a
                         target='_blank'
-                        href='https://www.doanhaiduy.website'
+                        href='https://www.doanhaiduy.dev'
                         rel='noreferrer'
                         className='text-gray-400 hover:text-gray-500'
                     >
@@ -86,7 +86,7 @@ const Footer = (props: Props) => {
                     </a>
                     <a
                         target='_blank'
-                        href='https://www.doanhaiduy.website'
+                        href='https://www.doanhaiduy.dev'
                         rel='noreferrer'
                         className='text-gray-400 hover:text-gray-500'
                     >
@@ -101,7 +101,7 @@ const Footer = (props: Props) => {
                     </a>
                     <a
                         target='_blank'
-                        href='https://www.doanhaiduy.website'
+                        href='https://www.doanhaiduy.dev'
                         rel='noreferrer'
                         className='text-gray-400 hover:text-gray-500'
                     >
@@ -112,7 +112,7 @@ const Footer = (props: Props) => {
                     </a>
                     <a
                         target='_blank'
-                        href='https://www.doanhaiduy.website'
+                        href='https://www.doanhaiduy.dev'
                         rel='noreferrer'
                         className='text-gray-400 hover:text-gray-500'
                     >
@@ -127,7 +127,7 @@ const Footer = (props: Props) => {
                     </a>
                     <a
                         target='_blank'
-                        href='https://www.doanhaiduy.website'
+                        href='https://www.doanhaiduy.dev'
                         rel='noreferrer'
                         className='text-gray-400 hover:text-gray-500'
                     >
@@ -143,12 +143,7 @@ const Footer = (props: Props) => {
                 </div>
                 <div className='w-full text-center text-gray-400 text-sm flex gap-1 justify-center mt-5'>
                     <p>© 2024 All Rights Reserved, built by </p>
-                    <a
-                        className='hover:underline'
-                        target='_blank'
-                        href='https://www.doanhaiduy.website'
-                        rel='noreferrer'
-                    >
+                    <a className='hover:underline' target='_blank' href='https://www.doanhaiduy.dev' rel='noreferrer'>
                         Doan Hai Duy
                     </a>
                 </div>

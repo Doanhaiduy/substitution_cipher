@@ -6,7 +6,7 @@ const Header = (props: Props) => {
     return (
         <header className='bg-white shadow-lg h-24 flex justify-between'>
             <a
-                href='https://www.doanhaiduy.website'
+                href='https://www.doanhaiduy.dev'
                 target='_blank'
                 rel='noreferrer'
                 className='border flex-shrink-0 flex items-center justify-center px-4 lg:px-6 xl:px-8 font-bold'
@@ -16,39 +16,31 @@ const Header = (props: Props) => {
             <nav className='header-links  font-semibold text-base lg:text-lg md:contents hidden'>
                 <ul className='flex items-center ml-4 xl:ml-8 mr-auto'>
                     <li className='p-3 xl:p-6 active'>
-                        <a target='_blank' href='https://www.doanhaiduy.website' rel='noreferrer'>
+                        <a target='_blank' href='https://www.doanhaiduy.dev' rel='noreferrer'>
                             <span>Home</span>
                         </a>
                     </li>
                     <li className='p-3 xl:p-6'>
-                        <a target='_blank' href='https://www.doanhaiduy.website' rel='noreferrer'>
+                        <a target='_blank' href='https://www.doanhaiduy.dev' rel='noreferrer'>
                             <span>Services</span>
                         </a>
                     </li>
+
                     <li className='p-3 xl:p-6'>
-                        <a target='_blank' href='https://www.doanhaiduy.website' rel='noreferrer'>
-                            <span>About</span>
-                        </a>
-                    </li>
-                    <li className='p-3 xl:p-6'>
-                        <a target='_blank' href='https://www.doanhaiduy.website' rel='noreferrer'>
+                        <a target='_blank' href='https://www.doanhaiduy.dev' rel='noreferrer'>
                             <span>Projects</span>
                         </a>
                     </li>
                     <li className='p-3 xl:p-6'>
-                        <a target='_blank' href='https://www.doanhaiduy.website' rel='noreferrer'>
+                        <a target='_blank' href='https://www.doanhaiduy.dev' rel='noreferrer'>
                             <span>Skills</span>
                         </a>
                     </li>
-                    <li className='p-3 xl:p-6'>
-                        <a target='_blank' href='https://www.doanhaiduy.website' rel='noreferrer'>
-                            <span>Contacts</span>
-                        </a>
-                    </li>
+
                     <li className='p-3 xl:p-6'>
                         <a
                             target='_blank'
-                            href='https://www.doanhaiduy.website'
+                            href='https://www.doanhaiduy.dev'
                             rel='noreferrer'
                             className='flex items-center'
                         >
@@ -77,7 +69,7 @@ const Header = (props: Props) => {
                     <li className='p-1'>
                         <a
                             target='_blank'
-                            href='https://www.doanhaiduy.website'
+                            href='https://www.doanhaiduy.dev'
                             rel='noreferrer'
                             className='inline-block rounded-full border p-2 hover:shadow-lg hover:border-opacity-0 duration-200 hover:-translate-y-0.5'
                         >
@@ -101,7 +93,7 @@ const Header = (props: Props) => {
                     <li className='p-1'>
                         <a
                             target='_blank'
-                            href='https://www.doanhaiduy.website'
+                            href='https://www.doanhaiduy.dev'
                             rel='noreferrer'
                             className='inline-block rounded-full border p-2 hover:shadow-lg hover:border-opacity-0 duration-200 hover:-translate-y-0.5'
                         >
@@ -125,7 +117,7 @@ const Header = (props: Props) => {
                     <li className='p-1'>
                         <a
                             target='_blank'
-                            href='https://www.doanhaiduy.website'
+                            href='https://www.doanhaiduy.dev'
                             rel='noreferrer'
                             className='inline-block rounded-full border p-2 hover:shadow-lg hover:border-opacity-0 duration-200 hover:-translate-y-0.5'
                         >
@@ -149,7 +141,7 @@ const Header = (props: Props) => {
                     <li className='p-1'>
                         <a
                             target='_blank'
-                            href='https://www.doanhaiduy.website'
+                            href='https://www.doanhaiduy.dev'
                             rel='noreferrer'
                             className='inline-block rounded-full border p-2 hover:shadow-lg hover:border-opacity-0 duration-200 hover:-translate-y-0.5'
                         >
@@ -173,12 +165,7 @@ const Header = (props: Props) => {
                 </ul>
             </nav>
             <div className='border flex items-center px-4 lg:px-6 xl:px-8'>
-                <a
-                    target='_blank'
-                    href='https://www.doanhaiduy.website'
-                    rel='noreferrer'
-                    className='mr-4 lg:mr-6 xl:mr-8'
-                >
+                <a target='_blank' href='https://www.doanhaiduy.dev' rel='noreferrer' className='mr-4 lg:mr-6 xl:mr-8'>
                     <svg
                         className='h-6 xl:h-8'
                         aria-hidden='true'

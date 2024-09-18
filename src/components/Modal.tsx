@@ -1,6 +1,7 @@
 import React from 'react';
 import Chart from './Chart';
 import DataReplacementContext from '../contexts/DataReplacementContext';
+import { on } from 'events';
 
 const dataCommon = [
     {
@@ -115,7 +116,7 @@ type Props = {
 };
 
 const Modal = (props: Props) => {
-    const { Data } = React.useContext(DataReplacementContext);
+    const { Data, DataSecondary, DataThird } = React.useContext(DataReplacementContext);
 
     const { visible, setVisible } = props;
     console.log(visible);
@@ -130,25 +131,77 @@ const Modal = (props: Props) => {
             ).toFixed(2)
         ),
     }));
+
+    const dataSecondaryConvert = DataSecondary.map((item) => ({
+        CharacterFrequency: item.CharacterFrequency,
+        Percentage: parseFloat(
+            (
+                (parseInt(item.CharacterFrequencyCount) /
+                    DataSecondary.reduce((acc, cur) => acc + parseInt(cur.CharacterFrequencyCount), 0)) *
+                100
+            ).toFixed(2)
+        ),
+    }));
+
+    const dataThirdConvert = DataThird.map((item) => ({
+        CharacterFrequency: item.CharacterFrequency,
+        Percentage: parseFloat(
+            (
+                (parseInt(item.CharacterFrequencyCount) /
+                    DataThird.reduce((acc, cur) => acc + parseInt(cur.CharacterFrequencyCount), 0)) *
+                100
+            ).toFixed(2)
+        ),
+    }));
+
     return (
         <div
             className='fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50'
             style={{ display: visible ? 'flex ' : 'none' }}
         >
-            <div className='relative w-11/12 h-5/6 bg-white rounded-md overflow-y-scroll'>
+            <div className='relative w-11/12 h-5/6 bg-white rounded-md'>
                 <div className='flex justify-between items-center p-4 border-b'>
                     <h2 className='text-xl font-semibold'>Biểu đồ trực quan</h2>
                     <button className='text-xl font-semibold' onClick={() => setVisible(false)}>
                         &times;
                     </button>
                 </div>
-                <div className='p-4 flex justify-center items-center gap-5 lg:flex-row flex-col '>
-                    <Chart data={dataCommon} title='Biểu đồ tần suất xuất hiện của các ký tự trong tiếng Anh' />
-                    {dataConvert.length > 0 ? (
-                        <Chart data={dataConvert} title='Biểu đồ tần số xuất hiện của các ký tự của bạn' />
-                    ) : (
-                        <p className='text-center'>Không có dữ liệu</p>
-                    )}
+                <div className='overflow-y-scroll h-5/6 bg-white'>
+                    <div className='p-4 flex justify-center items-center gap-5 lg:flex-row flex-col '>
+                        <Chart data={dataCommon} title='Biểu đồ tần suất xuất hiện của các ký tự trong tiếng Anh' />
+                        {dataConvert.length > 0 ? (
+                            <Chart
+                                data={dataConvert}
+                                title='Biểu đồ tần số xuất hiện của các ký tự của bạn'
+                                warmColor='#e74c3c'
+                                coolColor='#8e44ad'
+                            />
+                        ) : (
+                            <p className='text-center'>Không có dữ liệu</p>
+                        )}
+                    </div>
+                    <div className='p-4 flex justify-center items-center gap-5 lg:flex-row flex-col '>
+                        {dataSecondaryConvert.length > 0 ? (
+                            <Chart
+                                data={dataSecondaryConvert}
+                                title='Biểu đồ tần số xuất hiện của các ký tự cặp 2 của bạn'
+                                warmColor='#ff9ff3'
+                                coolColor='#10ac84'
+                            />
+                        ) : (
+                            <p className='text-center'>Không có dữ liệu</p>
+                        )}
+                        {dataThirdConvert.length > 0 ? (
+                            <Chart
+                                data={dataThirdConvert}
+                                title='Biểu đồ tần số xuất hiện của các ký tự cặp 3 của bạn'
+                                warmColor='#feca57'
+                                coolColor='#5f27cd'
+                            />
+                        ) : (
+                            <p className='text-center'>Không có dữ liệu</p>
+                        )}
+                    </div>
                 </div>
             </div>
         </div>

@@ -33,6 +33,8 @@ type Props = {
         CharacterFrequency: string;
         Percentage: number;
     }[];
+    warmColor?: string;
+    coolColor?: string;
 };
 function interpolateColor(warmColor: string, coolColor: string, percentage: number): string {
     const hexToRgb = (hex: string) => {
@@ -66,7 +68,7 @@ function interpolateColor(warmColor: string, coolColor: string, percentage: numb
 }
 
 const Chart = (props: Props) => {
-    const { data: dataProps, title } = props;
+    const { data: dataProps, title, warmColor: warmColorProps, coolColor: coolColorProps } = props;
     const data = {
         labels: dataProps.map((item) => item.CharacterFrequency),
         datasets: [
@@ -76,8 +78,8 @@ const Chart = (props: Props) => {
                 backgroundColor: dataProps.map((item, index) => {
                     const maxPercentage = Math.max(...dataProps.map((item) => item.Percentage));
                     const percentage = item.Percentage / maxPercentage;
-                    const warmColor = '#FF69B4'; // warm color (pink)
-                    const coolColor = '#45A0E6'; // cool color (blue)
+                    const warmColor = warmColorProps || '#FF69B4'; // warm color (red)
+                    const coolColor = coolColorProps || '#45A0E6'; // cool color (blue)
                     const color = interpolateColor(warmColor, coolColor, percentage);
                     return color;
                 }),
@@ -111,7 +113,7 @@ const Chart = (props: Props) => {
     };
 
     return (
-        <div className='w-full sm:w-[70%] lg:w-[45%]'>
+        <div className='w-full sm:w-[90%] lg:w-[45%] mx-auto justify-center flex items-center'>
             <Pie data={data} options={options} />
         </div>
     );

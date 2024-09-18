@@ -1,7 +1,6 @@
 import React from 'react';
 import StatisticalTable from '../components/StatisticalTable';
 import DataReplacementContext from '../contexts/DataReplacementContext';
-import Chart from '../components/Chart';
 import Modal from '../components/Modal';
 
 type Props = {};
@@ -10,7 +9,9 @@ const SubstitutionCipher = (props: Props) => {
     const [text, setText] = React.useState('');
     const [cipherText, setCipherText] = React.useState('');
 
-    const { Data, setData } = React.useContext(DataReplacementContext);
+    const { Data, DataSecondary, DataThird, setData, setDataSecondary, setDataThird } =
+        React.useContext(DataReplacementContext);
+
     const [selectionStart, setSelectionStart] = React.useState<number | null>(null);
     const [selectionEnd, setSelectionEnd] = React.useState<number | null>(null);
 
@@ -47,6 +48,70 @@ const SubstitutionCipher = (props: Props) => {
         tempData.sort((a, b) => parseInt(b.CharacterFrequencyCount) - parseInt(a.CharacterFrequencyCount));
 
         setData(tempData);
+    };
+
+    const StaticsDoubleCharacter = (text: string) => {
+        if (text.length === 0) {
+            alert('Vui lòng nhập dữ liệu');
+            return;
+        }
+
+        if (!/^[a-zA-Z\s]*$/.test(text)) {
+            alert('Định dạng không hợp lệ');
+            return;
+        }
+
+        const frequency = new Map<string, number>();
+
+        for (let i = 0; i < text.length - 1; i++) {
+            if (text[i] === ' ' || text[i + 1] === ' ') continue;
+
+            const key = text[i] + text[i + 1];
+            if (frequency.has(key)) {
+                frequency.set(key, frequency.get(key)! + 1);
+            } else {
+                frequency.set(key, 1);
+            }
+        }
+        const tempData = Array.from(frequency).map(([key, value]) => ({
+            CharacterFrequency: key,
+            CharacterFrequencyCount: value.toString(),
+        }));
+        tempData.sort((a, b) => parseInt(b.CharacterFrequencyCount) - parseInt(a.CharacterFrequencyCount));
+
+        setDataSecondary(tempData);
+    };
+
+    const StaticsTripleCharacter = (text: string) => {
+        if (text.length === 0) {
+            alert('Vui lòng nhập dữ liệu');
+            return;
+        }
+
+        if (!/^[a-zA-Z\s]*$/.test(text)) {
+            alert('Định dạng không hợp lệ');
+            return;
+        }
+
+        const frequency = new Map<string, number>();
+
+        for (let i = 0; i < text.length - 2; i++) {
+            if (text[i] === ' ' || text[i + 1] === ' ' || text[i + 2] === ' ') continue;
+
+            const key = text[i] + text[i + 1] + text[i + 2];
+            if (frequency.has(key)) {
+                frequency.set(key, frequency.get(key)! + 1);
+            } else {
+                frequency.set(key, 1);
+            }
+        }
+        const tempData = Array.from(frequency).map(([key, value]) => ({
+            CharacterFrequency: key,
+            CharacterFrequencyCount: value.toString(),
+        }));
+        tempData.sort((a, b) => parseInt(b.CharacterFrequencyCount) - parseInt(a.CharacterFrequencyCount));
+
+        setDataThird(tempData);
     };
 
     const HandleSubstitutionCipher = () => {
@@ -86,6 +151,8 @@ const SubstitutionCipher = (props: Props) => {
     const HandleStatistical = () => {
         StaticsText(text);
         setCipherText(text);
+        StaticsDoubleCharacter(text);
+        StaticsTripleCharacter(text);
     };
 
     const handleCipherTextSelect = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -111,14 +178,15 @@ const SubstitutionCipher = (props: Props) => {
             <div className='md:w-1/2 w-full flex flex-col items-center p-2'>
                 <h2 className='mb-3 text-2xl font-semibold leading-tight'>Trình phá mã thay thế</h2>
                 <textarea
-                    cols={40}
                     rows={10}
                     name=''
                     id=''
-                    className='border-2 border-gray-300 p-2 rounded-lg uppercase break-words'
+                    className='border-2 border-gray-300 p-2 rounded-lg uppercase break-words w-[90%]'
                     value={text}
                     onChange={(e) => {
                         setData([]);
+                        setDataSecondary([]);
+                        setDataThird([]);
                         setText(e.target.value.toUpperCase());
                         setCipherText('');
                     }}
@@ -130,6 +198,7 @@ const SubstitutionCipher = (props: Props) => {
                     >
                         Thống kê
                     </p>
+
                     <p
                         onClick={HandleSubstitutionCipher}
                         className='px-2 py-1 bg-blue-600 text-white rounded-lg min-w-[120px] text-center hover:opacity-80 cursor-pointer select-none'
@@ -144,11 +213,10 @@ const SubstitutionCipher = (props: Props) => {
                 )}
 
                 <textarea
-                    cols={40}
                     rows={10}
                     name=''
                     id=''
-                    className='border-2 border-gray-300 p-2 rounded-lg text-red-600 '
+                    className='border-2 border-gray-300 p-2 rounded-lg text-red-600 w-[90%]'
                     value={cipherText}
                     readOnly
                     onSelect={handleCipherTextSelect}

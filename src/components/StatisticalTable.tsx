@@ -8,13 +8,18 @@ export type Data = {
     hasReplace: boolean;
 }[];
 
+export type OtherData = {
+    CharacterFrequency: string;
+    CharacterFrequencyCount: string;
+}[];
+
 type Props = {
     visible: boolean;
     setVisible: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const StatisticalTable = (props: Props) => {
-    const { Data, setData } = React.useContext(DataReplacementContext);
+    const { Data, setData, DataSecondary, DataThird } = React.useContext(DataReplacementContext);
     const { visible, setVisible } = props;
 
     const HandleChangeValue = (e: React.ChangeEvent<HTMLInputElement>, index: number) => {
@@ -35,8 +40,8 @@ const StatisticalTable = (props: Props) => {
                     Xem biểu đồ
                 </p>
             </div>
-            <div className='overflow-x-auto rounded-md'>
-                <table className='min-w-full text-md rounded-md'>
+            <div className='overflow-x-auto rounded-md flex gap-2'>
+                <table className='w-1/3 text-md rounded-md'>
                     <thead className='rounded-t-lg dark:bg-gray-300'>
                         <tr className='text-right'>
                             <th title='Chữ' className='p-3 text-center'>
@@ -70,6 +75,52 @@ const StatisticalTable = (props: Props) => {
                                         }}
                                     />
                                 </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+                <table className='w-1/3 text-md rounded-md'>
+                    <thead className='rounded-t-lg dark:bg-gray-300'>
+                        <tr className='text-right'>
+                            <th title='Chữ' className='p-3 text-center'>
+                                Chữ
+                            </th>
+                            <th title='Tần số' className='p-3 text-center'>
+                                Tần số
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {DataSecondary?.map((item, index) => (
+                            <tr
+                                key={index}
+                                className='text-right border-b border-opacity-20 dark:border-gray-300 dark:bg-gray-100 hover:bg-gray-200'
+                            >
+                                <td className='px-3 py-1 text-center'>{item.CharacterFrequency}</td>
+                                <td className='px-3 py-1 text-center'>{item.CharacterFrequencyCount}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+                <table className='w-1/3 text-md rounded-md'>
+                    <thead className='rounded-t-lg dark:bg-gray-300'>
+                        <tr className='text-right'>
+                            <th title='Chữ' className='p-3 text-center'>
+                                Chữ
+                            </th>
+                            <th title='Tần số' className='p-3 text-center'>
+                                Tần số
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {DataThird?.map((item, index) => (
+                            <tr
+                                key={index}
+                                className='text-right border-b border-opacity-20 dark:border-gray-300 dark:bg-gray-100 hover:bg-gray-200'
+                            >
+                                <td className='px-3 py-1 text-center'>{item.CharacterFrequency}</td>
+                                <td className='px-3 py-1 text-center'>{item.CharacterFrequencyCount}</td>
                             </tr>
                         ))}
                     </tbody>
