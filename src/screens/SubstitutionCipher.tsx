@@ -53,12 +53,10 @@ const SubstitutionCipher = (props: Props) => {
 
     const StaticsDoubleCharacter = (text: string) => {
         if (text.length === 0) {
-            alert('Vui lòng nhập dữ liệu');
             return;
         }
 
         if (!/^[a-zA-Z\s]*$/.test(text)) {
-            alert('Định dạng không hợp lệ');
             return;
         }
 
@@ -85,12 +83,10 @@ const SubstitutionCipher = (props: Props) => {
 
     const StaticsTripleCharacter = (text: string) => {
         if (text.length === 0) {
-            alert('Vui lòng nhập dữ liệu');
             return;
         }
 
         if (!/^[a-zA-Z\s]*$/.test(text)) {
-            alert('Định dạng không hợp lệ');
             return;
         }
 
@@ -192,7 +188,7 @@ const SubstitutionCipher = (props: Props) => {
                         setCipherText('');
                     }}
                 ></textarea>
-                <div className='flex gap-2 justify-around my-4'>
+                <div className='flex gap-2 justify-around my-4 md:flex-row flex-col'>
                     <p
                         onClick={HandleStatistical}
                         className='px-2 py-1 bg-blue-600 text-white rounded-lg min-w-[120px] text-center hover:opacity-80 cursor-pointer select-none'
